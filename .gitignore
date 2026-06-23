@@ -1,0 +1,15 @@
+# Database Configuration (Contains passwords)
+config/database.php
+
+# Google Cloud API Credentials
+application_default_credentials.json
+
+# User Uploads
+uploads/
+
+# Node Modules
+node_modules/
+
+# Mac OS Files
+.DS_Store
+*.DS_Store
