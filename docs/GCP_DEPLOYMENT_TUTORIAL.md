@@ -1,6 +1,6 @@
 # Google Cloud Compute Engine Deployment Tutorial (LAMP Stack)
 
-This tutorial will guide you step-by-step on how to deploy your `iDaftar@STDC` application to a Google Cloud Compute Engine Virtual Machine running Ubuntu/Debian, with Apache, MySQL, and PHP installed directly on the VM.
+This tutorial will guide you step-by-step on how to deploy your `STDC Program Registration System` application to a Google Cloud Compute Engine Virtual Machine running Ubuntu/Debian, with Apache, MySQL, and PHP installed directly on the VM.
 
 ---
 
@@ -100,7 +100,7 @@ cd /var/www/html/
 
 # Clone your repository (You may need to clear the directory first)
 sudo rm index.html
-sudo git clone https://github.com/yourusername/iDaftar.git .
+sudo git clone https://github.com/darrenfedrickson/STDC-Program-Onboarding-System.git .
 ```
 
 ### Option C: Using `gcloud compute scp`
@@ -164,7 +164,7 @@ sudo chmod -R 775 /var/www/html/uploads/
 2. Find the **External IP** address of your `idaftar-production-vm`.
 3. Open your web browser and navigate to `http://YOUR_EXTERNAL_IP`.
 
-Your `iDaftar@STDC` platform should now be live on Google Cloud!
+Your `STDC Program Registration System` platform should now be live on Google Cloud!
 
 ---
 
