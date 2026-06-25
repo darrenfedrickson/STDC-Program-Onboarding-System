@@ -87,7 +87,7 @@ $admins = $stmt->fetchAll();
     <div class="card">
         <h3 class="mb-3">Add New Admin</h3>
         <p class="text-light mb-3">Create a new account with administrative privileges.</p>
-        <form action="/stdc-program-onboarding-system/admin/manage_admins.php" method="POST">
+        <form action="<?php echo BASE_URL; ?>/admin/manage_admins.php" method="POST">
             <div class="form-group">
                 <label class="form-label" for="full_name">Full Name</label>
                 <input type="text" name="full_name" id="full_name" class="form-control" required>

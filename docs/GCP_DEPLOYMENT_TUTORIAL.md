@@ -77,7 +77,7 @@ You can transfer your files from your local Mac to the VM using the `gcloud` CLI
 
 ### Option A: Using the Browser SSH "Upload file" Button (Simplest Method)
 If you opened the SSH terminal directly in your web browser from the Google Cloud Console:
-1. Compress your `iDaftar@STDC` folder into a zip file on your Mac (e.g., `iDaftar.zip`).
+1. Compress your `BASE_URL` folder into a zip file on your Mac (e.g., `iDaftar.zip`).
 2. In the top right corner of the SSH browser window, click the **Upload file** button (an icon with an up-arrow) and select `iDaftar.zip`.
 3. The file will be uploaded to your home directory (`~`).
 4. Run the following commands to unzip and move it to Apache:
@@ -100,13 +100,13 @@ cd /var/www/html/
 
 # Clone your repository (You may need to clear the directory first)
 sudo rm index.html
-sudo git clone https://github.com/darrenfedrickson/STDC-Program-Onboarding-System.git .
+sudo git clone https://github.com/darrenfedrickson/BASE_URL.git .
 ```
 
 ### Option C: Using `gcloud compute scp`
 If you want to transfer directly from your local XAMPP folder, run this command **on your local Mac terminal**:
 ```bash
-gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/stdc-program-onboarding-system/* your-username@idaftar-production-vm:/tmp/
+gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/BASE_URL/* your-username@idaftar-production-vm:/tmp/
 ```
 Then, back in your **Google Cloud SSH terminal**, move the files to Apache:
 ```bash
@@ -197,7 +197,7 @@ mysql -u stdc_admin -p stdc_registration_staging < ~/latest_backup.sql
 To replace your existing PHP files with the latest versions from your local Mac:
 
 **Using the Browser SSH "Upload file" Button:**
-1. Zip your updated `iDaftar@STDC` folder locally into `update.zip`.
+1. Zip your updated `BASE_URL` folder locally into `update.zip`.
 2. Click the **Upload file** button in the SSH browser window and upload `update.zip`.
 3. Unzip and copy over the files:
 ```bash
@@ -208,7 +208,7 @@ sudo cp -r update/* /var/www/html/
 **Using gcloud scp (Direct File Transfer):**
 Run this on your local Mac terminal to overwrite the old files on the VM:
 ```bash
-gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/stdc-program-onboarding-system/* your-username@idaftar-production-vm:/var/www/html/
+gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/BASE_URL/* your-username@idaftar-production-vm:/var/www/html/
 ```
 *(Note: If you get a permission denied error, `scp` it to `~/` first, then SSH into the VM and use `sudo cp -r ~/* /var/www/html/`)*
 

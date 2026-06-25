@@ -69,7 +69,7 @@ if (empty($currentUser['phone_number'])) {
 </style>
 
 <div class="mb-4 text-center">
-    <a href="/stdc-program-onboarding-system/user/index.php" class="btn btn-sm btn-outline" style="background: white;">&larr; Back to Dashboard</a>
+    <a href="<?php echo BASE_URL; ?>/user/index.php" class="btn btn-sm btn-outline" style="background: white;">&larr; Back to Dashboard</a>
 </div>
 
 <div class="g-form-container">
@@ -92,11 +92,11 @@ if (empty($currentUser['phone_number'])) {
     
     <?php if (!empty($program['poster_image'])): ?>
         <div class="g-form-card" style="padding: 0; overflow: hidden;">
-            <img src="/stdc-program-onboarding-system/<?php echo htmlspecialchars($program['poster_image']); ?>" alt="Program Poster" style="width: 100%; display: block;">
+            <img src="<?php echo BASE_URL; ?>/<?php echo htmlspecialchars($program['poster_image']); ?>" alt="Program Poster" style="width: 100%; display: block;">
         </div>
     <?php endif; ?>
     
-    <form action="/stdc-program-onboarding-system/user/process_apply.php" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL; ?>/user/process_apply.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="program_id" value="<?php echo $program['id']; ?>">
         
         <!-- Pre-filled Personal Information styled as cards -->

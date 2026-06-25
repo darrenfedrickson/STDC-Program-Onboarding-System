@@ -54,18 +54,18 @@ $registrations = $regStmt->fetchAll();
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
 <div class="mb-4">
-    <a href="/stdc-program-onboarding-system/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
+    <a href="<?php echo BASE_URL; ?>/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
     <div style="display: flex; justify-content: space-between; align-items: flex-end;">
         <div>
             <h1>Attendees: <?php echo htmlspecialchars($program['title']); ?></h1>
             <p>Capacity: <?php echo count($registrations); ?> / <?php echo $program['capacity']; ?></p>
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
-            <a href="/stdc-program-onboarding-system/admin/program_stats.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-color: var(--border-color); color: var(--text-color);">
+            <a href="<?php echo BASE_URL; ?>/admin/program_stats.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-color: var(--border-color); color: var(--text-color);">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
                 Statistics
             </a>
-            <a href="/stdc-program-onboarding-system/admin/export_attendees.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-color: var(--border-color); color: var(--text-color);">
+            <a href="<?php echo BASE_URL; ?>/admin/export_attendees.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline" style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-color: var(--border-color); color: var(--text-color);">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Export
             </a>
@@ -100,7 +100,7 @@ $registrations = $regStmt->fetchAll();
                             </td>
                             <td>
                                 <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-                                    <form action="/stdc-program-onboarding-system/admin/attendees.php?program_id=<?php echo $program_id; ?>" method="POST" style="display: flex; gap: 0.25rem;">
+                                    <form action="<?php echo BASE_URL; ?>/admin/attendees.php?program_id=<?php echo $program_id; ?>" method="POST" style="display: flex; gap: 0.25rem;">
                                         <input type="hidden" name="registration_id" value="<?php echo $reg['id']; ?>">
                                         <select name="new_status" class="form-control" style="padding: 0.15rem 0.5rem; font-size: 0.75rem; height: auto;">
                                             <option value="pending" <?php if($reg['application_status']=='pending') echo 'selected'; ?>>Pending</option>
@@ -110,7 +110,7 @@ $registrations = $regStmt->fetchAll();
                                         </select>
                                         <button type="submit" class="btn btn-sm btn-primary" style="padding: 0.15rem 0.5rem; font-size: 0.75rem;">Update</button>
                                     </form>
-                                    <a href="/stdc-program-onboarding-system/admin/attendee_details.php?id=<?php echo $reg['id']; ?>" class="btn btn-sm btn-outline" style="text-align: center; padding: 0.15rem; font-size: 0.75rem;">View Details</a>
+                                    <a href="<?php echo BASE_URL; ?>/admin/attendee_details.php?id=<?php echo $reg['id']; ?>" class="btn btn-sm btn-outline" style="text-align: center; padding: 0.15rem; font-size: 0.75rem;">View Details</a>
                                 </div>
                             </td>
                         </tr>

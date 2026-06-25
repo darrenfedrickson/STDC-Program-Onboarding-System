@@ -35,12 +35,12 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
 <div class="mb-4">
-    <a href="/stdc-program-onboarding-system/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
+    <a href="<?php echo BASE_URL; ?>/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
     <h1>Edit Program: <?php echo htmlspecialchars($program['title']); ?></h1>
 </div>
 
 <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <form action="/stdc-program-onboarding-system/admin/program_actions.php" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL; ?>/admin/program_actions.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="action" value="edit">
         <input type="hidden" name="program_id" value="<?php echo $program['id']; ?>">
         
@@ -91,7 +91,7 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Poster Preview Container -->
         <div class="mb-3" id="poster_preview_container" style="<?php echo empty($program['poster_image']) ? 'display: none;' : ''; ?>">
             <div style="padding: 0; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color); background: white;">
-                <img id="poster_preview" src="<?php echo !empty($program['poster_image']) ? '/stdc-program-onboarding-system/' . htmlspecialchars($program['poster_image']) : ''; ?>" alt="Poster Preview" style="width: 100%; display: block;">
+                <img id="poster_preview" src="<?php echo !empty($program['poster_image']) ? BASE_URL . '/' . htmlspecialchars($program['poster_image']) : ''; ?>" alt="Poster Preview" style="width: 100%; display: block;">
             </div>
         </div>
         
@@ -199,7 +199,7 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
     window.initialFormSchema = <?php echo json_encode($fields); ?>;
 </script>
-<script src="/stdc-program-onboarding-system/assets/js/form-builder.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/form-builder.js"></script>
 
 <script>
 function previewPoster(input) {
