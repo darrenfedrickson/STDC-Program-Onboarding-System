@@ -34,7 +34,7 @@ require dirname(__DIR__) . '/includes/header.php';
         <span class="stat-value"><?php echo $activePrograms; ?></span>
     </div>
     <div class="stat-card">
-        <a href="/iDaftar@STDC/admin/registrations.php"><span class="stat-title">Pending Registrations</span></a>
+        <a href="<?php echo BASE_URL; ?>/admin/registrations.php"><span class="stat-title">Pending Registrations</span></a>
         <span class="stat-value"><?php echo $pendingRegistrations; ?></span>
     </div>
 </div>
@@ -1211,7 +1211,7 @@ require dirname(__DIR__) . '/includes/header.php';
         historyBox.innerHTML = '<div style="text-align:center; margin-top:40px; color:#94a3b8;">Loading...</div>';
 
         try {
-            const res = await fetch(`/iDaftar@STDC/admin/api/get_chat.php?session_id=${id}`);
+            const res = await fetch(`${window.BASE_URL}/admin/api/get_chat.php?session_id=${id}`);
             const data = await res.json();
             historyBox.innerHTML = '';
 
@@ -1250,7 +1250,7 @@ require dirname(__DIR__) . '/includes/header.php';
         if (!confirm("Delete this chat?")) return;
 
         try {
-            const res = await fetch('/iDaftar@STDC/admin/api/delete_chat.php', {
+            const res = await fetch(window.BASE_URL + '/admin/api/delete_chat.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ session_id: id })
@@ -1295,7 +1295,7 @@ require dirname(__DIR__) . '/includes/header.php';
 
             if (newTitle !== oldTitle) {
                 try {
-                    await fetch('/iDaftar@STDC/admin/api/rename_chat.php', {
+                    await fetch(window.BASE_URL + '/admin/api/rename_chat.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ session_id: sessionId, title: newTitle })
@@ -1355,7 +1355,7 @@ require dirname(__DIR__) . '/includes/header.php';
         sendBtn.style.background = '#dc2626';
 
         try {
-            const res = await fetch('/iDaftar@STDC/admin/ai_query.php', {
+            const res = await fetch(window.BASE_URL + '/admin/ai_query.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt: prompt, session_id: currentAiSessionId, model: 'auto' }),
@@ -1472,7 +1472,7 @@ require dirname(__DIR__) . '/includes/header.php';
 
         if (confirm("Delete this message?")) {
             try {
-                const res = await fetch('/iDaftar@STDC/admin/api/delete_message.php', {
+                const res = await fetch(window.BASE_URL + '/admin/api/delete_message.php', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ message_id: currentContextMenuMsgId })

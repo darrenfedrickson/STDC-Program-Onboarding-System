@@ -77,7 +77,7 @@ foreach ($categorical_fields as $field) {
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="mb-4">
-    <a href="/iDaftar@STDC/admin/attendees.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline mb-3">&larr; Back to Attendees</a>
+    <a href="<?php echo BASE_URL; ?>/admin/attendees.php?program_id=<?php echo $program_id; ?>" class="btn btn-sm btn-outline mb-3">&larr; Back to Attendees</a>
     <h1>Data Visualization</h1>
     <p>Program: <?php echo htmlspecialchars($program['title']); ?> (<?php echo $total_registrations; ?> Total Applicants)</p>
 </div>

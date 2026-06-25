@@ -31,7 +31,7 @@ $stmt = $pdo->prepare("INSERT INTO ai_messages (session_id, role, content) VALUE
 $stmt->execute([$sessionId, $userPrompt]);
 $userMsgId = $pdo->lastInsertId();
 
-// 2. Define the System Prompt & Schema for iDaftar@STDC
+// 2. Define the System Prompt & Schema for STDC-Program-Onboarding-System
 // Extract all custom field names from the database so the AI knows they exist
 $fieldsQuery = $pdo->query("SELECT DISTINCT name, label FROM program_fields");
 $customFields = [];
