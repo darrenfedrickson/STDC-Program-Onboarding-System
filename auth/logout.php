@@ -7,9 +7,9 @@ $was_admin = isset($_SESSION['role']) && in_array($_SESSION['role'], ['admin', '
 session_destroy();
 
 if ($was_admin) {
-    header("Location: /iDaftar@STDC/admin/login.php");
+    header("Location: /stdc-program-onboarding-system/admin/login.php");
 } else {
-    header("Location: /iDaftar@STDC/auth/login.php");
+    header("Location: /stdc-program-onboarding-system/auth/login.php");
 }
 exit();
 ?>

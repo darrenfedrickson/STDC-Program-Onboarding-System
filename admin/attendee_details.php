@@ -97,12 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_all'])) {
 ?>
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
-<form action="/iDaftar@STDC/admin/attendee_details.php?id=<?php echo $reg_id; ?>" method="POST">
+<form action="/stdc-program-onboarding-system/admin/attendee_details.php?id=<?php echo $reg_id; ?>" method="POST">
 <input type="hidden" name="update_all" value="1">
 
 <div class="mb-4" style="display: flex; justify-content: space-between; align-items: flex-start;">
     <div>
-        <a href="/iDaftar@STDC/admin/attendees.php?program_id=<?php echo $reg['program_id']; ?>" class="btn btn-sm btn-outline mb-3">&larr; Back to Attendees</a>
+        <a href="/stdc-program-onboarding-system/admin/attendees.php?program_id=<?php echo $reg['program_id']; ?>" class="btn btn-sm btn-outline mb-3">&larr; Back to Attendees</a>
         <h1>Attendee Details</h1>
         <p>Program: <?php echo htmlspecialchars($reg['program_title']); ?></p>
     </div>

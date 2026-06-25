@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="auth-container">
     <div class="card auth-card">
         <div class="text-center mb-4">
-            <img src="/iDaftar@STDC/assets/img/LogoSTDC.png" alt="STDC Logo" style="max-width: 150px; margin: 0 auto; display: block;">
+            <img src="/stdc-program-onboarding-system/assets/img/LogoSTDC.png" alt="STDC Logo" style="max-width: 150px; margin: 0 auto; display: block;">
             <h2 class="mt-3">Admin Login</h2>
             <p>Access the STDC Control Panel</p>
         </div>
         
-        <form action="/iDaftar@STDC/admin/login.php" method="POST">
+        <form action="/stdc-program-onboarding-system/admin/login.php" method="POST">
             <div class="form-group">
                 <label class="form-label" for="email">Admin Email</label>
                 <input type="email" name="email" id="email" class="form-control" required>

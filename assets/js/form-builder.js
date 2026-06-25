@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateSchema(); // Ensure latest schema is in input if in builder mode
             }
             
-            fetch('/iDaftar@STDC/admin/api_templates.php', {
+            fetch('/stdc-program-onboarding-system/admin/api_templates.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

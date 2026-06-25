@@ -20,13 +20,13 @@ if (isset($_GET['template_id'])) {
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
 <div class="mb-4">
-    <a href="/iDaftar@STDC/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
+    <a href="/stdc-program-onboarding-system/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
     <h1>Create New Program</h1>
     <p>Define the details and registration form for your new program.</p>
 </div>
 
 <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <form action="/iDaftar@STDC/admin/program_actions.php" method="POST" enctype="multipart/form-data" class="mt-3">
+    <form action="/stdc-program-onboarding-system/admin/program_actions.php" method="POST" enctype="multipart/form-data" class="mt-3">
         <input type="hidden" name="action" value="create">
         
         <div class="grid grid-cols-2">
@@ -130,7 +130,7 @@ if (isset($_GET['template_id'])) {
     window.initialFormSchema = <?php echo $initialSchema; ?>;
 </script>
 
-<script src="/iDaftar@STDC/assets/js/form-builder.js"></script>
+<script src="/stdc-program-onboarding-system/assets/js/form-builder.js"></script>
 
 <script>
 function previewPoster(input) {

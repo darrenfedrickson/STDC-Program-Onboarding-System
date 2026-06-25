@@ -106,7 +106,7 @@ sudo git clone https://github.com/darrenfedrickson/STDC-Program-Onboarding-Syste
 ### Option C: Using `gcloud compute scp`
 If you want to transfer directly from your local XAMPP folder, run this command **on your local Mac terminal**:
 ```bash
-gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/iDaftar@STDC/* your-username@idaftar-production-vm:/tmp/
+gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/stdc-program-onboarding-system/* your-username@idaftar-production-vm:/tmp/
 ```
 Then, back in your **Google Cloud SSH terminal**, move the files to Apache:
 ```bash
@@ -208,7 +208,7 @@ sudo cp -r update/* /var/www/html/
 **Using gcloud scp (Direct File Transfer):**
 Run this on your local Mac terminal to overwrite the old files on the VM:
 ```bash
-gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/iDaftar@STDC/* your-username@idaftar-production-vm:/var/www/html/
+gcloud compute scp --recurse /Applications/XAMPP/xamppfiles/htdocs/stdc-program-onboarding-system/* your-username@idaftar-production-vm:/var/www/html/
 ```
 *(Note: If you get a permission denied error, `scp` it to `~/` first, then SSH into the VM and use `sudo cp -r ~/* /var/www/html/`)*
 

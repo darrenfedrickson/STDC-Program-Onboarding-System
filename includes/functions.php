@@ -4,7 +4,7 @@ session_start();
 
 function redirect($url) {
     if (strpos($url, '/') === 0) {
-        $url = '/iDaftar@STDC' . $url;
+        $url = '/stdc-program-onboarding-system' . $url;
     }
     header("Location: " . $url);
     exit();

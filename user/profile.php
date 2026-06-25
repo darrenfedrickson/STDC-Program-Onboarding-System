@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php endif; ?>
 
-    <form action="/iDaftar@STDC/user/profile.php" method="POST">
+    <form action="/stdc-program-onboarding-system/user/profile.php" method="POST">
         <div class="form-group">
             <label class="form-label" for="email">Email Address</label>
             <input type="email" name="email" id="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" disabled>

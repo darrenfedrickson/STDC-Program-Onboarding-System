@@ -59,7 +59,7 @@ $availablePrograms = $availStmt->fetchAll();
                         <?php if ($prog['registered_count'] >= $prog['capacity']): ?>
                             <button class="btn btn-sm" style="background: var(--text-light); color: white; cursor: not-allowed;" disabled>Full</button>
                         <?php else: ?>
-                            <a href="/iDaftar@STDC/user/register.php?id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-primary">Apply Now</a>
+                            <a href="/stdc-program-onboarding-system/user/register.php?id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-primary">Apply Now</a>
                         <?php endif; ?>
                     </div>
                 </div>
