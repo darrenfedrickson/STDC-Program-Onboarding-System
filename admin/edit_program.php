@@ -70,6 +70,21 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endif; ?>
         
+        <div class="grid grid-cols-3 mb-3" style="gap: 1rem;">
+            <div class="form-group">
+                <label class="form-label" for="intake_date">Intake (Month/Year)</label>
+                <input type="text" name="intake_date" id="intake_date" class="form-control" placeholder="e.g. February 2026 Intake" value="<?php echo htmlspecialchars($program['intake_date'] ?? ''); ?>">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="duration">Duration</label>
+                <input type="text" name="duration" id="duration" class="form-control" placeholder="e.g. 6-8 Months (Weekend)" value="<?php echo htmlspecialchars($program['duration'] ?? ''); ?>">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="location">Location</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="e.g. STDC Campus" value="<?php echo htmlspecialchars($program['location'] ?? ''); ?>">
+            </div>
+        </div>
+        
         <div class="form-group mb-3">
             <label class="form-label" for="capacity">Capacity (Minimum: <?php echo $current_registered; ?>)</label>
             <input type="number" name="capacity" id="capacity" class="form-control" required min="<?php echo $current_registered; ?>" value="<?php echo $program['capacity']; ?>">

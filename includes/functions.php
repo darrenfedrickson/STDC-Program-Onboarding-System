@@ -4,8 +4,8 @@ session_start();
 
 // Dynamically determine the BASE_URL based on the folder path
 if (!defined('BASE_URL')) {
-    $docRoot = str_replace('\', '/', $_SERVER['DOCUMENT_ROOT']);
-    $projectRoot = str_replace('\', '/', dirname(__DIR__));
+    $docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+    $projectRoot = str_replace('\\', '/', dirname(__DIR__));
     $baseUrl = str_replace($docRoot, '', $projectRoot);
     if (empty($baseUrl) || $baseUrl === $projectRoot) {
         $baseUrl = ''; // Fallback for some environments

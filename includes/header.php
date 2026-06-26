@@ -13,7 +13,7 @@ if (isLoggedIn() && isset($pdo)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STDC Program Registration System</title>
+    <title>STDC Program Onboarding System</title>
     <script>
         window.BASE_URL = '<?php echo BASE_URL; ?>';
     </script>
@@ -40,9 +40,10 @@ if (isLoggedIn() && isset($pdo)) {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
         <img src="<?php echo BASE_URL; ?>/assets/img/LogoSTDC.png" alt="STDC Logo" style="height: 30px; width: auto;">
+        <span class="system-title">STDC Program Onboarding System</span>
     </div>
     <div class="top-nav-right">
-        <span class="badge badge-active"><?php echo htmlspecialchars(ucfirst($_SESSION['role'])); ?></span>
+        <span class="badge <?php echo $_SESSION['role'] === 'developer' ? 'badge-developer' : 'badge-active'; ?>"><?php echo htmlspecialchars(ucfirst($_SESSION['role'])); ?></span>
         <a href="<?php echo BASE_URL; ?>/user/profile.php" class="top-profile-link" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-dark); text-decoration: none; padding: 6px; border-radius: 4px; transition: background-color 0.2s;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-light);"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             <span class="user-name" style="font-weight: 500; font-size: 0.875rem;"><?php echo htmlspecialchars($_SESSION['full_name']); ?></span>
@@ -88,7 +89,7 @@ if (isLoggedIn() && isset($pdo)) {
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span class="nav-text">Manage Users</span>
                     </a></li>
-                    <?php if (isset($currentUserEmail) && $currentUserEmail === 'admin@stdc.com'): ?>
+                    <?php if ((isset($currentUserEmail) && $currentUserEmail === 'admin@stdc.com') || (isset($_SESSION['role']) && $_SESSION['role'] === 'developer')): ?>
                         <li><a href="<?php echo BASE_URL; ?>/admin/manage_admins.php" <?php echo isActive(BASE_URL . '/admin/manage_admins.php', $currentPath); ?>>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                             <span class="nav-text">Manage Admins</span>
@@ -98,6 +99,10 @@ if (isLoggedIn() && isset($pdo)) {
                     <li><a href="<?php echo BASE_URL; ?>/user/index.php" <?php echo isActive(BASE_URL . '/user/index.php', $currentPath); ?>>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                         <span class="nav-text">Dashboard</span>
+                    </a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/user/applications.php" <?php echo isActive(BASE_URL . '/user/applications.php', $currentPath); ?>>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <span class="nav-text">Applications</span>
                     </a></li>
                     <li><a href="<?php echo BASE_URL; ?>/user/profile.php" <?php echo isActive(BASE_URL . '/user/profile.php', $currentPath); ?>>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>

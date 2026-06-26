@@ -10,8 +10,8 @@ $stmtUser = $pdo->prepare("SELECT email FROM users WHERE id = ?");
 $stmtUser->execute([$_SESSION['user_id']]);
 $currentUserEmail = $stmtUser->fetchColumn();
 
-if ($currentUserEmail !== 'admin@stdc.com') {
-    $_SESSION['error'] = "Access Denied: Only the Super Admin can manage admin accounts.";
+if ($currentUserEmail !== 'admin@stdc.com' && $_SESSION['role'] !== 'developer') {
+    $_SESSION['error'] = "Access Denied: Only authorized users can manage admin accounts.";
     redirect('/admin/index.php');
 }
 
@@ -71,9 +71,6 @@ $admins = $stmt->fetchAll();
                     <tr>
                         <td>
                             <?php echo htmlspecialchars($admin['full_name']); ?>
-                            <?php if ($admin['email'] === 'admin@stdc.com'): ?>
-                                <span class="badge badge-active ml-2">Super Admin</span>
-                            <?php endif; ?>
                         </td>
                         <td><?php echo htmlspecialchars($admin['email']); ?></td>
                         <td><?php echo date('M d, Y', strtotime($admin['created_at'])); ?></td>

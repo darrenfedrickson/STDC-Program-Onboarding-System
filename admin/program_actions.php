@@ -15,6 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = $_POST['status'];
         $custom_link_text = sanitizeInput($_POST['custom_link_text'] ?? '');
         $custom_link_url = sanitizeInput($_POST['custom_link_url'] ?? '');
+        $intake_date = sanitizeInput($_POST['intake_date'] ?? '');
+        $duration = sanitizeInput($_POST['duration'] ?? '');
+        $location = sanitizeInput($_POST['location'] ?? '');
         $form_schema = $_POST['form_schema']; // JSON string from JS
         
         $poster_image = null;
@@ -34,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             redirect('/admin/programs.php');
         }
 
-        $insertStmt = $pdo->prepare("INSERT INTO programs (title, description, capacity, status, created_by, custom_link_text, custom_link_url, poster_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($insertStmt->execute([$title, $description, $capacity, $status, $_SESSION['user_id'], $custom_link_text, $custom_link_url, $poster_image])) {
+        $insertStmt = $pdo->prepare("INSERT INTO programs (title, description, capacity, status, created_by, custom_link_text, custom_link_url, poster_image, intake_date, duration, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if ($insertStmt->execute([$title, $description, $capacity, $status, $_SESSION['user_id'], $custom_link_text, $custom_link_url, $poster_image, $intake_date, $duration, $location])) {
             $program_id = $pdo->lastInsertId();
             
             // Insert into program_fields
@@ -67,6 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = $_POST['status'];
         $custom_link_text = sanitizeInput($_POST['custom_link_text'] ?? '');
         $custom_link_url = sanitizeInput($_POST['custom_link_url'] ?? '');
+        $intake_date = sanitizeInput($_POST['intake_date'] ?? '');
+        $duration = sanitizeInput($_POST['duration'] ?? '');
+        $location = sanitizeInput($_POST['location'] ?? '');
         
         $poster_image = null;
         if (isset($_FILES['poster_image']) && $_FILES['poster_image']['error'] === UPLOAD_ERR_OK) {
@@ -100,11 +106,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 
                 if ($poster_image) {
-                    $updateStmt = $pdo->prepare("UPDATE programs SET title = ?, description = ?, capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, poster_image = ? WHERE id = ?");
-                    $updateSuccess = $updateStmt->execute([$title, $description, $capacity, $status, $custom_link_text, $custom_link_url, $poster_image, $program_id]);
+                    $updateStmt = $pdo->prepare("UPDATE programs SET title = ?, description = ?, capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, poster_image = ?, intake_date = ?, duration = ?, location = ? WHERE id = ?");
+                    $updateSuccess = $updateStmt->execute([$title, $description, $capacity, $status, $custom_link_text, $custom_link_url, $poster_image, $intake_date, $duration, $location, $program_id]);
                 } else {
-                    $updateStmt = $pdo->prepare("UPDATE programs SET title = ?, description = ?, capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ? WHERE id = ?");
-                    $updateSuccess = $updateStmt->execute([$title, $description, $capacity, $status, $custom_link_text, $custom_link_url, $program_id]);
+                    $updateStmt = $pdo->prepare("UPDATE programs SET title = ?, description = ?, capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, intake_date = ?, duration = ?, location = ? WHERE id = ?");
+                    $updateSuccess = $updateStmt->execute([$title, $description, $capacity, $status, $custom_link_text, $custom_link_url, $intake_date, $duration, $location, $program_id]);
                 }
                 
                 if ($updateSuccess) {
@@ -137,11 +143,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 // Limited edit
                 if ($poster_image) {
-                    $updateStmt = $pdo->prepare("UPDATE programs SET capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, poster_image = ? WHERE id = ?");
-                    $updateSuccess = $updateStmt->execute([$capacity, $status, $custom_link_text, $custom_link_url, $poster_image, $program_id]);
+                    $updateStmt = $pdo->prepare("UPDATE programs SET capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, poster_image = ?, intake_date = ?, duration = ?, location = ? WHERE id = ?");
+                    $updateSuccess = $updateStmt->execute([$capacity, $status, $custom_link_text, $custom_link_url, $poster_image, $intake_date, $duration, $location, $program_id]);
                 } else {
-                    $updateStmt = $pdo->prepare("UPDATE programs SET capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ? WHERE id = ?");
-                    $updateSuccess = $updateStmt->execute([$capacity, $status, $custom_link_text, $custom_link_url, $program_id]);
+                    $updateStmt = $pdo->prepare("UPDATE programs SET capacity = ?, status = ?, custom_link_text = ?, custom_link_url = ?, intake_date = ?, duration = ?, location = ? WHERE id = ?");
+                    $updateSuccess = $updateStmt->execute([$capacity, $status, $custom_link_text, $custom_link_url, $intake_date, $duration, $location, $program_id]);
                 }
                 
                 if ($updateSuccess) {

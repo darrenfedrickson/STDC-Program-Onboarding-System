@@ -76,8 +76,9 @@ function callGeminiWithFallback($postData, $accessToken, $projectId, $region, $p
 {
     $validModels = [
         'gemini-2.5-flash',
-        'gemini-2.0-flash',
-        'gemini-1.5-flash-002'
+        'gemini-1.5-flash-002',
+        'gemini-1.5-flash',
+        'gemini-1.0-pro'
     ];
 
     $models = $validModels;
@@ -91,7 +92,7 @@ function callGeminiWithFallback($postData, $accessToken, $projectId, $region, $p
 
     $errors = [];
     foreach ($models as $model) {
-        $url = "https://aiplatform.googleapis.com/v1/projects/{$projectId}/locations/global/publishers/google/models/{$model}:generateContent";
+        $url = "https://{$region}-aiplatform.googleapis.com/v1/projects/{$projectId}/locations/{$region}/publishers/google/models/{$model}:generateContent";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [

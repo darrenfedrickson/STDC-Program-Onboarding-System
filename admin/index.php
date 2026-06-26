@@ -21,7 +21,7 @@ require dirname(__DIR__) . '/includes/header.php';
 
 <div class="mb-4">
     <h1>Admin Dashboard</h1>
-    <p>Welcome to the STDC Program Registration System</p>
+    <p>Welcome to the STDC Program Onboarding System</p>
 </div>
 
 <div class="grid grid-cols-3">
