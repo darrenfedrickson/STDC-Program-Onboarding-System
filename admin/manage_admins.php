@@ -10,8 +10,8 @@ $stmtUser = $pdo->prepare("SELECT email FROM users WHERE id = ?");
 $stmtUser->execute([$_SESSION['user_id']]);
 $currentUserEmail = $stmtUser->fetchColumn();
 
-if ($currentUserEmail !== 'admin@stdc.com') {
-    $_SESSION['error'] = "Access Denied: Only the Super Admin can manage admin accounts.";
+if ($currentUserEmail !== 'admin@stdc.com' && $_SESSION['role'] !== 'developer') {
+    $_SESSION['error'] = "Access Denied: Only authorized users can manage admin accounts.";
     redirect('/admin/index.php');
 }
 
@@ -71,9 +71,6 @@ $admins = $stmt->fetchAll();
                     <tr>
                         <td>
                             <?php echo htmlspecialchars($admin['full_name']); ?>
-                            <?php if ($admin['email'] === 'admin@stdc.com'): ?>
-                                <span class="badge badge-active ml-2">Super Admin</span>
-                            <?php endif; ?>
                         </td>
                         <td><?php echo htmlspecialchars($admin['email']); ?></td>
                         <td><?php echo date('M d, Y', strtotime($admin['created_at'])); ?></td>
@@ -87,7 +84,7 @@ $admins = $stmt->fetchAll();
     <div class="card">
         <h3 class="mb-3">Add New Admin</h3>
         <p class="text-light mb-3">Create a new account with administrative privileges.</p>
-        <form action="/iDaftar@STDC/admin/manage_admins.php" method="POST">
+        <form action="<?php echo BASE_URL; ?>/admin/manage_admins.php" method="POST">
             <div class="form-group">
                 <label class="form-label" for="full_name">Full Name</label>
                 <input type="text" name="full_name" id="full_name" class="form-control" required>

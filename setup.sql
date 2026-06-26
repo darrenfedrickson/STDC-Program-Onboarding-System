@@ -21,6 +21,9 @@ CREATE TABLE IF NOT EXISTS programs (
     poster_image VARCHAR(255) NULL,
     custom_link_url VARCHAR(255) NULL,
     custom_link_text VARCHAR(255) NULL,
+    intake_date VARCHAR(100) NULL,
+    duration VARCHAR(100) NULL,
+    location VARCHAR(255) NULL,
     created_by INT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL

@@ -13,13 +13,13 @@ Industrial training is a crucial component of the academic curriculum, designed 
 The organization attached is the **Selangor Technical Skills Development Centre (STDC)**, an esteemed institution dedicated to providing technical and vocational education and training (TVET). STDC aims to produce highly skilled professionals tailored to the demands of the modern workforce. The institution manages various high-impact programs, including the STDC-Siemens PLC Certification and Full Stack Web Development Bootcamps, requiring robust digital infrastructure to handle continuous student enrollments.
 
 ### 1.3 Background of Department Attached
-The attachment was within the **IT and Software Development Department** of STDC. This department is responsible for digitizing campus operations, managing data architecture, and developing internal platforms like **iDaftar@STDC**. The team focuses on modernizing legacy systems, implementing artificial intelligence solutions for data analytics, and ensuring secure, seamless registration workflows for both administrators and applicants.
+The attachment was within the **IT and Software Development Department** of STDC. This department is responsible for digitizing campus operations, managing data architecture, and developing internal platforms like **BASE_URL**. The team focuses on modernizing legacy systems, implementing artificial intelligence solutions for data analytics, and ensuring secure, seamless registration workflows for both administrators and applicants.
 
 ---
 
 ## CHAPTER 2: SYSTEM ARCHITECTURE AND DESIGN
 
-To build the `iDaftar@STDC` platform and the AI-Powered SQL Dashboard, extensive system analysis and design were required to ensure seamless communication between the user interface, the machine learning models, and the database architecture.
+To build the `BASE_URL` platform and the AI-Powered SQL Dashboard, extensive system analysis and design were required to ensure seamless communication between the user interface, the machine learning models, and the database architecture.
 
 ### 2.1 Directory Structure and Core Files
 The application is built using a monolithic PHP architecture, structured into logical feature-based directories.
@@ -47,7 +47,7 @@ flowchart TD
 ```
 
 ### 2.3 Entity-Relationship Diagram (ERD)
-The AI assistant relies on a deep understanding of the relational database schema. Below is the simplified Entity-Relationship Diagram (ERD) that represents the core tables managed within the **iDaftar@STDC** platform.
+The AI assistant relies on a deep understanding of the relational database schema. Below is the simplified Entity-Relationship Diagram (ERD) that represents the core tables managed within the **BASE_URL** platform.
 
 ```mermaid
 erDiagram
@@ -132,7 +132,7 @@ The Export Modal solved a critical issue where legends were being cut off on sma
 ## CHAPTER 4: CLOUD DEPLOYMENT AND INFRASTRUCTURE
 
 ### 4.1 Introduction to Cloud Migration
-As part of the industrial training and in alignment with self-directed learning for the **Google Cloud Associate Cloud Engineer** certification, the final phase of the project involved migrating the `iDaftar@STDC` application from a local development environment (XAMPP) to a production-grade cloud infrastructure. This provided hands-on experience with Infrastructure as a Service (IaaS) deployments.
+As part of the industrial training and in alignment with self-directed learning for the **Google Cloud Associate Cloud Engineer** certification, the final phase of the project involved migrating the `BASE_URL` application from a local development environment (XAMPP) to a production-grade cloud infrastructure. This provided hands-on experience with Infrastructure as a Service (IaaS) deployments.
 
 ### 4.2 Compute Engine Virtual Machine (VM) Setup
 The deployment utilized **Google Compute Engine (GCE)**. 
@@ -155,7 +155,7 @@ To practice core system administration and database management skills, the datab
 ## CHAPTER 5: CONCLUSION AND RECOMMENDATIONS
 
 ### 5.1 Benefit of the Assignments
-The tasks completed have transformed the **iDaftar@STDC** platform from a basic registration system into a highly intelligent, cloud-hosted data analysis tool. The integration of the AI Dashboard significantly reduces the administrative burden of generating manual reports. By allowing non-technical staff to query complex datasets using everyday language, data accessibility within the organization has been vastly improved, empowering faster decision-making.
+The tasks completed have transformed the **BASE_URL** platform from a basic registration system into a highly intelligent, cloud-hosted data analysis tool. The integration of the AI Dashboard significantly reduces the administrative burden of generating manual reports. By allowing non-technical staff to query complex datasets using everyday language, data accessibility within the organization has been vastly improved, empowering faster decision-making.
 
 ### 5.2 Summary of Industrial Training
 The industrial training period provided invaluable exposure to full-stack web development, machine learning application, and cloud computing infrastructure. It fostered a deep understanding of translating complex business requirements into user-friendly software solutions. Technical skills in PHP, vanilla JavaScript, advanced CSS, LLM prompt engineering, and **Google Cloud Platform (GCP) deployment** were significantly enhanced. Beyond technical growth, the experience cultivated strong analytical thinking and the ability to independently architect features from concept to production, serving as a solid foundation for achieving the Google Cloud Associate Cloud Engineer certification.

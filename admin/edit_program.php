@@ -35,12 +35,12 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
 <div class="mb-4">
-    <a href="/iDaftar@STDC/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
+    <a href="<?php echo BASE_URL; ?>/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
     <h1>Edit Program: <?php echo htmlspecialchars($program['title']); ?></h1>
 </div>
 
 <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <form action="/iDaftar@STDC/admin/program_actions.php" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL; ?>/admin/program_actions.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="action" value="edit">
         <input type="hidden" name="program_id" value="<?php echo $program['id']; ?>">
         
@@ -70,6 +70,21 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endif; ?>
         
+        <div class="grid grid-cols-3 mb-3" style="gap: 1rem;">
+            <div class="form-group">
+                <label class="form-label" for="intake_date">Intake (Month/Year)</label>
+                <input type="text" name="intake_date" id="intake_date" class="form-control" placeholder="e.g. February 2026 Intake" value="<?php echo htmlspecialchars($program['intake_date'] ?? ''); ?>">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="duration">Duration</label>
+                <input type="text" name="duration" id="duration" class="form-control" placeholder="e.g. 6-8 Months (Weekend)" value="<?php echo htmlspecialchars($program['duration'] ?? ''); ?>">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="location">Location</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="e.g. STDC Campus" value="<?php echo htmlspecialchars($program['location'] ?? ''); ?>">
+            </div>
+        </div>
+        
         <div class="form-group mb-3">
             <label class="form-label" for="capacity">Capacity (Minimum: <?php echo $current_registered; ?>)</label>
             <input type="number" name="capacity" id="capacity" class="form-control" required min="<?php echo $current_registered; ?>" value="<?php echo $program['capacity']; ?>">
@@ -91,7 +106,7 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Poster Preview Container -->
         <div class="mb-3" id="poster_preview_container" style="<?php echo empty($program['poster_image']) ? 'display: none;' : ''; ?>">
             <div style="padding: 0; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color); background: white;">
-                <img id="poster_preview" src="<?php echo !empty($program['poster_image']) ? '/iDaftar@STDC/' . htmlspecialchars($program['poster_image']) : ''; ?>" alt="Poster Preview" style="width: 100%; display: block;">
+                <img id="poster_preview" src="<?php echo !empty($program['poster_image']) ? BASE_URL . '/' . htmlspecialchars($program['poster_image']) : ''; ?>" alt="Poster Preview" style="width: 100%; display: block;">
             </div>
         </div>
         
@@ -199,7 +214,7 @@ $fields = $fieldsStmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
     window.initialFormSchema = <?php echo json_encode($fields); ?>;
 </script>
-<script src="/iDaftar@STDC/assets/js/form-builder.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/form-builder.js"></script>
 
 <script>
 function previewPoster(input) {

@@ -33,7 +33,7 @@ We will create a second folder on the server to hold the staging code.
 1. Navigate to the web root and clone your GitHub repository into a new folder named `staging`:
    ```bash
    cd /var/www/
-   sudo git clone https://github.com/darrenfedrickson/STDC-Program-Onboarding-System.git staging
+   sudo git clone https://github.com/darrenfedrickson/BASE_URL.git staging
    ```
 2. Give Apache ownership of the new folder so it can read the files:
    ```bash

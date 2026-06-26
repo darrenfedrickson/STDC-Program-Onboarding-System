@@ -1,7 +1,7 @@
-# iDaftar@STDC System Documentation
+# BASE_URL System Documentation
 
 ## 1. System Overview
-**iDaftar@STDC** is a comprehensive web-based platform built for the Selangor Technical Skills Development Centre (STDC). It serves as both a public-facing portal for students to apply for technical programs and an administrative backend for managing users, programs, and registrations. 
+**BASE_URL** is a comprehensive web-based platform built for the Selangor Technical Skills Development Centre (STDC). It serves as both a public-facing portal for students to apply for technical programs and an administrative backend for managing users, programs, and registrations. 
 
 The system's standout feature is its **AI-Powered Administrative Dashboard**, which utilizes Google Cloud's Gemini LLM to allow administrators to query relational databases using natural language and visualize the data dynamically via Chart.js.
 
@@ -91,4 +91,4 @@ Admins can export the generated Chart.js visualizations.
 The application has been fully migrated from a local XAMPP environment to Google Cloud.
 - **Compute Engine VM**: An IaaS approach was taken by spinning up a Linux VM on Google Compute Engine.
 - **Database setup in VM**: MySQL was installed directly onto the VM (rather than utilizing a managed service like Cloud SQL) to allow for hands-on administration. The local database was exported and migrated into this cloud instance.
-- **Networking**: VPC Firewall rules were configured to allow HTTP/HTTPS traffic, and an External IP was assigned so the `iDaftar@STDC` platform is globally accessible.
+- **Networking**: VPC Firewall rules were configured to allow HTTP/HTTPS traffic, and an External IP was assigned so the `BASE_URL` platform is globally accessible.

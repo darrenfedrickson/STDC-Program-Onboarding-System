@@ -20,16 +20,16 @@ if (isset($_GET['template_id'])) {
 <?php require dirname(__DIR__) . '/includes/header.php'; ?>
 
 <div class="mb-4">
-    <a href="/iDaftar@STDC/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
+    <a href="<?php echo BASE_URL; ?>/admin/programs.php" class="btn btn-sm btn-outline mb-3">&larr; Back to Programs</a>
     <h1>Create New Program</h1>
     <p>Define the details and registration form for your new program.</p>
 </div>
 
 <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <form action="/iDaftar@STDC/admin/program_actions.php" method="POST" enctype="multipart/form-data" class="mt-3">
+    <form action="<?php echo BASE_URL; ?>/admin/program_actions.php" method="POST" enctype="multipart/form-data" class="mt-3">
         <input type="hidden" name="action" value="create">
         
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 mb-3">
             <div class="form-group">
                 <label class="form-label" for="title">Program Title</label>
                 <input type="text" name="title" id="title" class="form-control" required>
@@ -37,6 +37,21 @@ if (isset($_GET['template_id'])) {
             <div class="form-group">
                 <label class="form-label" for="capacity">Capacity</label>
                 <input type="number" name="capacity" id="capacity" class="form-control" required min="1">
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-3 mb-3" style="gap: 1rem;">
+            <div class="form-group">
+                <label class="form-label" for="intake_date">Intake (Month/Year)</label>
+                <input type="text" name="intake_date" id="intake_date" class="form-control" placeholder="e.g. February 2026 Intake">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="duration">Duration</label>
+                <input type="text" name="duration" id="duration" class="form-control" placeholder="e.g. 6-8 Months (Weekend)">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="location">Location</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="e.g. STDC Campus">
             </div>
         </div>
         
@@ -130,7 +145,7 @@ if (isset($_GET['template_id'])) {
     window.initialFormSchema = <?php echo $initialSchema; ?>;
 </script>
 
-<script src="/iDaftar@STDC/assets/js/form-builder.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/form-builder.js"></script>
 
 <script>
 function previewPoster(input) {

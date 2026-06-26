@@ -6,6 +6,6 @@
 </div>
 <?php endif; ?>
 
-<script src="/iDaftar@STDC/assets/js/main.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/main.js"></script>
 </body>
 </html>

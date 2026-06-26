@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="width: 50px;">No.</th>
                         <th>Title</th>
                         <th>Capacity</th>
                         <th>Status</th>
@@ -50,9 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 </thead>
                 <tbody>
                     <?php if (count($programs) > 0): ?>
+                        <?php $rowNum = 1; ?>
                         <?php foreach ($programs as $prog): ?>
                             <tr>
-                                <td><?php echo $prog['id']; ?></td>
+                                <td><?php echo $rowNum++; ?></td>
                                 <td>
                                     <h4 class="mb-1"><?php echo htmlspecialchars($prog['title']); ?></h4>
                                     <p class="mb-1" style="font-size: 0.875rem;"><?php echo htmlspecialchars(substr($prog['description'], 0, 100)) . '...'; ?></p>
@@ -68,11 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                                 </td>
                                 <td>
                                     <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                        <a href="/iDaftar@STDC/admin/attendees.php?program_id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-outline">View Attendees</a>
-                                        <a href="/iDaftar@STDC/admin/edit_program.php?id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="<?php echo BASE_URL; ?>/admin/attendees.php?program_id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-outline">View Attendees</a>
+                                        <a href="<?php echo BASE_URL; ?>/admin/edit_program.php?id=<?php echo $prog['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                                         
                                         <?php if (isDeveloper()): ?>
-                                            <form action="/iDaftar@STDC/admin/program_actions.php" method="POST" style="margin: 0; display: contents;">
+                                            <form action="<?php echo BASE_URL; ?>/admin/program_actions.php" method="POST" style="margin: 0; display: contents;">
                                                 <input type="hidden" name="action" value="delete">
                                                 <input type="hidden" name="program_id" value="<?php echo $prog['id']; ?>">
                                                 <button type="submit" class="btn btn-sm btn-outline btn-danger" onclick="return confirm('WARNING: Are you absolutely sure you want to delete this program? This will permanently erase all custom fields and all user registrations associated with it.');" style="border-color: #dc3545; color: #dc3545;">
@@ -100,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         
         <div class="template-gallery" style="display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 0.5rem;">
             <!-- Blank Template -->
-            <a href="/iDaftar@STDC/admin/create_program.php" class="template-card-link" style="text-decoration: none; color: inherit; width: 140px; flex-shrink: 0;">
+            <a href="<?php echo BASE_URL; ?>/admin/create_program.php" class="template-card-link" style="text-decoration: none; color: inherit; width: 140px; flex-shrink: 0;">
                 <div class="template-card-preview" style="height: 180px; background: white; border: 1px solid #dadce0; border-radius: 4px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: border-color 0.2s;">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="color: #ea4335;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </div>
@@ -110,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             <!-- Saved Templates -->
             <?php foreach ($formTemplates as $tpl): ?>
             <div style="position: relative; width: 140px; flex-shrink: 0;">
-                <a href="/iDaftar@STDC/admin/create_program.php?template_id=<?php echo $tpl['id']; ?>" class="template-card-link" style="text-decoration: none; color: inherit; display: block;">
+                <a href="<?php echo BASE_URL; ?>/admin/create_program.php?template_id=<?php echo $tpl['id']; ?>" class="template-card-link" style="text-decoration: none; color: inherit; display: block;">
                     <div class="template-card-preview" style="height: 180px; background: white; border: 1px solid #dadce0; border-radius: 4px; padding: 10px; cursor: pointer; transition: border-color 0.2s; position: relative; overflow: hidden;">
                         <!-- Generic Document Thumbnail -->
                         <div style="width: 100%; height: 20px; background: #f1f3f4; border-radius: 2px; margin-bottom: 8px;"></div>
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     <div class="template-card-title mt-2" style="font-weight: 500; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo htmlspecialchars($tpl['name']); ?></div>
                 </a>
                 
-                <form action="/iDaftar@STDC/admin/programs.php" method="POST" style="position: absolute; top: 8px; right: 8px; margin: 0; z-index: 10;">
+                <form action="<?php echo BASE_URL; ?>/admin/programs.php" method="POST" style="position: absolute; top: 8px; right: 8px; margin: 0; z-index: 10;">
                     <input type="hidden" name="action" value="delete_template">
                     <input type="hidden" name="template_id" value="<?php echo $tpl['id']; ?>">
                     <button type="submit" onclick="return confirm('Delete this template?');" style="background: white; border: 1px solid #dadce0; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--danger); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
