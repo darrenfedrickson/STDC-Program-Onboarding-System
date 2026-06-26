@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="width: 50px;">No.</th>
                         <th>Title</th>
                         <th>Capacity</th>
                         <th>Status</th>
@@ -50,9 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 </thead>
                 <tbody>
                     <?php if (count($programs) > 0): ?>
+                        <?php $rowNum = 1; ?>
                         <?php foreach ($programs as $prog): ?>
                             <tr>
-                                <td><?php echo $prog['id']; ?></td>
+                                <td><?php echo $rowNum++; ?></td>
                                 <td>
                                     <h4 class="mb-1"><?php echo htmlspecialchars($prog['title']); ?></h4>
                                     <p class="mb-1" style="font-size: 0.875rem;"><?php echo htmlspecialchars(substr($prog['description'], 0, 100)) . '...'; ?></p>
